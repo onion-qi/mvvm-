@@ -1,0 +1,55 @@
+<!--
+ * @Author: fengqi
+ * @Date: 2021-07-17 09:52:25
+ * @LastEditors: fengqi
+ * @LastEditTime: 2021-07-17 09:56:28
+ * @FilePath: /mvvm/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 @click="clickName">{{person.name}}--{{person.age}}</h2>
+        <h3>{{person.fav}}</h3>
+        <h5>{{msg}}</h5>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div v-text="msg"></div>
+        <div v-text="person.fav"></div>
+        <div v-html="htmlStr"></div>
+        <input type="text" v-model='msg'>
+        <a v-bind:href="ads">11111</a>
+    </div>
+</body>
+<script src='./observer.js'></script>
+<script src='./fvue.js'></script>
+<script>
+    let vm = new FVue({
+        el:'#app',
+        data:{
+            person:{
+                name: 'fengqi',
+                age: 18,
+                fav: 'read'
+            },
+            htmlStr:'<span>121313</span>',
+            msg:'学习响应式源码',
+            ads:'https://www.baidu.com/s?ie=UTF-8&wd=js%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7%E5%80%BC'
+        },
+        methods: {
+            clickName(){
+                this.person.name = '我是个点击事件'
+            }
+        },
+    })
+</script>
+</html>
